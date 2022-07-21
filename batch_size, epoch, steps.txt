@@ -1,0 +1,25 @@
+batch_size : 한번 계산하기 위한 학습 데이터의 개수
+steps : batch_size별로 계산하되, 전체 학습 데이터에 대해서 이를 반복해서 적용한 횟수
+epoch : 전체 학습 데이터에 대해서 steps를 진행
+
+4가지 종류
+Gradient Descent, Stochastic Gradient Descent(SGD), Mini batch SGD(이론적), Deep Learning Framwork Mini batch SGD
+
+Deep Learning Framwork Mini batch SGD
+Mini batch하되, step을 통해 전체 Train Data를 순차적으로 모두 Gradient 수행 - 일반적으로 Iteration이라고 표현
+ex)
+train data size = 100
+Epoch = 500
+
+batch size = 5
+step => 20
+steps => 20*500 = 10,000 
+한번에 학습할 데이터가 5이고 train data가 100이기 때문에 총 20번의 steps과정을 거침
+
+batch_size의 크기에 관한 학습관계
+batch_size가 클수록 많은 데이터를 저장하여야 하므로 용량이 커야한다.
+batch_size가 작을수록 학습은 촘촘하게 되겠지만, 학습때마다 가중치를 업데이트 하고, steps이 길어지므로 시간이 오래 걸린다.  
+
+epoch이 증가하면 많은 학습을 통해 모델의 성능을 향상시킬 수 있으나 너무 많은 반복학습을 하면 
+관측되지 못한 테스트 셋에 대한 성능이 떨어지는 오버피팅(overfitting)이 발생할 수 있습니다.
+이는 early stopping을 통해 조기종료하여 해결할 수 있습니다.

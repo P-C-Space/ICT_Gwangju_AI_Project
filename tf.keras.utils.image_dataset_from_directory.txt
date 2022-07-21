@@ -1,0 +1,53 @@
+tf.keras.utils.image_dataset_from_directory()
+
+## 데이터 셋 분류
+##validation_data(x,y)
+##validation_split = 수치(ex 0.2) 1000개중 800개 트레이닝 시키고 200개 모델평가하는데 쓰인다.
+
+
+directory	
+데이터가 있는 디렉토리입니다. "추론"된 경우 labels각 클래스에 대한 이미지가 포함된 하위 디렉터리가 포함되어야 합니다. 그렇지 않으면 디렉토리 구조가 무시됩니다.
+
+labels	
+"inferred"(레이블이 디렉토리 구조에서 생성됨), None(레이블 없음) 또는 디렉토리에서 찾은 이미지 파일 수와 동일한 크기의 정수 레이블 목록/튜플입니다. 레이블은 이미지 파일 경로의 영숫자 순서에 따라 정렬되어야 합니다( Python에서 가져옴). os.walk(directory)
+
+label_mode	의 인코딩을 설명하는 문자열입니다 labels. 옵션은 다음과 같습니다.
+	'int': 레이블이 정수로 인코딩됨을 의미합니다(예: sparse_categorical_crossentropy손실).
+	'categorical'은 레이블이 범주형 벡터(예: categorical_crossentropy손실)로 인코딩됨을 의미합니다.
+	'binary'는 레이블(2개만 있을 수 있음)이 float32값이 0 또는 1인 스칼라로 인코딩됨을 의미합니다(예: for binary_crossentropy).
+	없음(레이블 없음).
+
+class_names	
+"labels"가 "inferred"인 경우에만 유효합니다. 이것은 클래스 이름의 명시적 목록입니다(하위 디렉토리의 이름과 일치해야 함). 클래스의 순서를 제어하는 ​​데 사용됩니다(그렇지 않으면 영숫자 순서가 사용됨).
+
+color_mode	
+"회색조", "rgb", "rgba" 중 하나입니다. 기본값: "rgb". 이미지가 1, 3 또는 4 채널로 변환되는지 여부.
+
+batch_size	
+데이터 배치의 크기입니다. 기본값: 32. None인 경우 데이터가 일괄 처리되지 않습니다(데이터 세트는 개별 샘플을 생성함).
+
+image_size	
+이미지를 디스크에서 읽은 후 크기를 조정할 크기로, 로 지정됩니다 . 기본값은 입니다. 파이프라인은 크기가 모두 같아야 하는 이미지 배치를 처리하므로 이를 제공해야 합니다. (height, width)(256, 256)
+
+shuffle	
+데이터를 섞을지 여부입니다. 기본값: 참. False로 설정하면 데이터를 영숫자 순서로 정렬합니다.
+
+seed	
+셔플 및 변환을 위한 선택적 임의 시드입니다.
+
+validation_split	
+0과 1 사이의 선택적 부동 소수점, 유효성 검사를 위해 예약할 데이터의 일부입니다.
+
+subset	
+반환할 데이터의 하위 집합입니다. "훈련" 또는 "검증" 중 하나입니다. 가 설정된 경우에만 사용됩니다 .validation_split
+
+interpolation	
+문자열, 이미지 크기를 조정할 때 사용되는 보간 방법입니다. 기본값은 bilinear입니다. bilinear, nearest, bicubic, area, lanczos3, lanczos5, gaussian, 를 지원합니다 mitchellcubic.
+
+follow_links	
+심볼릭 링크가 가리키는 하위 디렉터리를 방문할지 여부입니다. 기본값은 False입니다.
+
+crop_to_aspect_ratio	
+True이면 가로 세로 비율 왜곡 없이 이미지 크기를 조정합니다. 원래 종횡비가 대상 종횡비와 다른 경우 출력 이미지는 대상 종횡비와 일치하는 (크기의 ) 이미지에서 가능한 가장 큰 창을 반환하도록 잘립니다. 기본적으로( ) 종횡비는 유지되지 않을 수 있습니다. image_sizecrop_to_aspect_ratio=False
+
+**kwargs	레거시 키워드 인수.

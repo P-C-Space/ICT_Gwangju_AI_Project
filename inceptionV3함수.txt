@@ -1,0 +1,35 @@
+tf.keras.applications.InceptionV3(
+	include_top=True,
+	weights="imagenet",
+	input_tensor=None,
+	input_shape=None,
+	pooling=None,
+	classes=1000,
+	classifier_activation="softmax",
+)
+
+include_top - (default값은 True)
+마지막 계층에 완전 연결 계층을 포함할지 여부 True, False
+
+weights - (default : imagenet)
+None : 무작위 초기화
+imagenet(ImageNet에서 사전 학습) : 로드할 가중치 파일의 경로 중 하나 
+
+input_tensor - (default : None)
+layer.input() 모델의 이미지 입력으로 사용할 선택적 Keras텐서(즉, 출력)입니다.
+여러 다른 네트워크 간의 입력을 공유하는 데 유용
+
+input_shape - (default :
+include_top이 False인 경우 지정
+
+pooling - (default : None)
+include_top이 False인 경우에 feature추출을 위한 선택적 풀링 모드이다. 
+
+classes - (default : 1000)
+include_top = Ture, no weight 가중치 인수가 지정되지 않을 시 이미지를 분류할 선택적 클래스 수
+
+classifier_activation
+최상위 계층의 활성화 함수
+include_top True가 아니라면 무시
+classifier_activation=Messages를 설정하여 "top" 계층의 로직을 반환합니다.
+사전 학습된 가중치를 로드할 때 classifier_activation can only be None or "softmax".
