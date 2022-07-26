@@ -1,0 +1,58 @@
+metrics(분류와 회귀에 사용되는 평가지표)
+
+- Classification Metrics(분류시 사용되는 평가지표)
+	- 주요 개념 : Confusion Matrix(혼동행렬). 모델의 예측과 실제 결과를 비교해 나타내는 표
+		- 가로행에는 모델 예측결과, 세로열에는 실제결과 기입
+		- True / False : 판단이 옳고 그름
+		- Positive / Negative : 답이 True일 것이라 ‘예측’한 것을 Positive로 표현
+	
+	- Accuracy(정확도) : 우리가 선택한 코드에 사용되어있는 Metrics
+		- (TP+TN)/(TP+FN+FP+TN)으로 계산.
+		- 가장 직관적으로 모델의 성능을 나타내는 지표.
+		- TP, FN모두 고려하는 지표.
+		- 데이터셋의 불균형에 대해서는 표현하지 못한다는 것이 단점
+
+	- Precision(정밀도)
+		- (TP)/(TP+FP)로 계산.
+		- 모델이 True라고 분류한 것(Positive)중 실제로 True인 것의 비율을 표현
+		- Accuracy보다 조금 더 구체화 된 지표
+		- ‘모델의 관점에서’ 실제 True인 정답을 True라고 예측하는 경우만 관심을 갖는 것.
+	
+	- Recall(재현율) : hit rate라고 부르기도 함.
+		- (TP)/(TP+FN)로 계산.
+		- ‘진짜 정답 관점’에서 실제 True인 정답을 True라고 예측하는 경우만 관심을 갖는 것.
+	
+	- F1-Score
+		- Precision과 Recall의 조화평균
+		- 데이터레이블이 불균형할 때 모델의 성능을 정확하게 평가할 수 있는 평가지표
+
+	- Fall-out(False Positice Rate; FPR)
+		- (FP)/(TP+FP)로 계산.
+		- 실제 정답이 False인 것들 중 모델이 True라고 잘못 예측한 비율
+	
+	- ROC(Receiver Operating Characteristic)
+		- Recall과 Fall-out변화를 그래프로 시각화 한 것.
+		- Recall은 실제 정답 True인 것 중 모델이 True라고 분류한 것,
+		  Fall-out은 실제 정답 False인데 모델이 True로 분류한 것.
+		- Recall을 y축, Fall-out을 x축으로 해서 그래프를 그려 시각화 한 
+		  평가지표.	
+- Regression Metrics(회귀시 사용되는 평가지표) : 예측값과 실제값의 오차가 얼마나 되는지로 평가
+	- MSE(Mean Squared Error / 평균오차제곱합)
+		- 예측값과 실제값의 차이를 제곱해서 평균낸 것.
+		- 0에 가까울수록 좋은 성능
+
+	- RMSE(Root Mean Squared Error)
+		- MSE의 값에 루트 씌워둔 것.
+		- MSE가 제곱해서 평균내기 때문에 오차값이 커지는 것을 보정하기 위해 루트씌움
+		- 회귀에서 가장 대표적으로 사용되는 평가지표
+		- 마찬가지로 0에 가까울수록 좋은 성능 의미
+	
+	- RMSLE(Root Mean Squared Log Error)
+		- MSE의 각 인자마다 로그를 씌워두었다고 생각하면 됨
+		- 인자들이 정규분포 따르지 않는 불균형한 모양이거나,
+		  연속적인 값의 분포가 한쪽으로 치우쳐진 경우 사용 
+		- 이상치에 크게 영향을 받지 않음
+		- 마찬가지로 0에 가까울수록 좋은 성능 의미
+
+	- MAE(Mean Absolute Error)
+		- 예측값과 실제값의 차이에 절댓값 씌워서 합한 것
