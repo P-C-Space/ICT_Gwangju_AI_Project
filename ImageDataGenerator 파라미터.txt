@@ -1,0 +1,33 @@
+tensorflow.keras의 ImageDataGenerator 파라미터
+
+- rescale : 크기 재조절 인수. default값 = None.
+- rotation_range : 랜덤하게 사진 회전시킬 각도범위
+- width_shift_range : 그림을 수평으로 랜덤하게 평행이동
+	- 부동소수점인 경우 <1 : 전체 가로넓이에서의 비율
+			  >= : 픽셀의 개수
+	- 정수인 경우 -width_shift_range ~ +width_shift_range 사이 구간의 픽셀개수
+- height_shift_range : 그림을 수직으로 랜덤하게 평행이동
+	- 부동소수점인 경우 <1 : 전체 세로높이에서의 비율
+			  >= : 픽셀의 개수
+	- 정수인 경우 (-width_shift_range , +width_shift_range) 구간의 픽셀개수
+- shear_range : 원본 이미지를 랜덤하게 전단변환할 각도범위.
+	- rotation_range 값만큼 회전할때 y축 방향으로 각도를 증가시켜 이미지 변형
+	- shear_range = 0.1이면 0.1라디안 내외로 시계반대방향으로 이미지 변환
+- zoom_range : 랜덤하게 사진을 확대할 범위
+	- (1-zoom_range , 1+zoom_range)범위만큼 확대, 축소 이루어짐
+	- 확대 비율의 범위를 [최소, 최대]이렇게 리스트형태로 입력해도 됨
+	- zoom_range = 0.1이면 0.9에서 1.1배의 크기로 이미지를 변환
+- horizontal_flip : 랜덤하게 이미지를 수평으로 뒤집음
+- vertical_flip : 랜덤하게 이미지를 수직으로 뒤집음
+- fill_mode : 회전이나 가로/세로 이동으로 인해 새롭게 생성해야 할 픽셀을 채울 방식
+
+
+
+
+
+
+
+
+
+
+
